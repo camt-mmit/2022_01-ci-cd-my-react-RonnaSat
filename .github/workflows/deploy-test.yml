@@ -27,7 +27,7 @@ jobs:
           https://git:${{ github.token }}@github.com/${{github.repository}}.git
           git pull origin test
           rm -rf ./*
-          cp rf ../build/* ./
+          cp -rf ../build/* ./
           git add.
           git commit -m "${{github.actor}} deploy"
           git push origin test
