@@ -1,11 +1,11 @@
 name: deploy-test
-run-name: ${{ github.actor }} is deploying test
+run-name: ${{ github.actor }} is deploying gh-pages
 on:
   push: 
     branchs: 
       - master
 jobs: 
-  deploy-test:
+  deploy-gh-pages:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v3
@@ -20,15 +20,15 @@ jobs:
       - run: npm install
       - run: PUBLIC_URL=/${{ github.event.repository.name }} npm run build
       - run: |
-          mkdir ./test
-          git init -b test ./test
-          cd ./test
-          git remote add -t test origin \
+          mkdir ./gh-pages
+          git init -b gh-pages ./gh-pages
+          cd ./gh-pages
+          git remote add -t gh-pages origin \
           https://git:${{ github.token }}@github.com/${{ github.repository }}.git 
-          git pull origin test
+          git pull origin gh-pages
           rm -rf ./*
           cp -rf ../build/* ./
           git add .
           git commit -m "Manually commit"
-          git push origin test
+          git push origin gh-pages
           cd ..
