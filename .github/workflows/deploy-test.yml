@@ -1,4 +1,4 @@
-name: deploy-gh-pages-actions
+name: deploy-test
 run-name: ${{ github.actor }} is deploying gh-pages
 on:
   push: 
