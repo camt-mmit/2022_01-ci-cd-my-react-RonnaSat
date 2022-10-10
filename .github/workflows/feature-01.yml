@@ -22,9 +22,8 @@ jobs:
       - run: |
           git fetch --unshallow 
           git checkout master
-          git pull
           git merge feature-01
-          git push
+          git push origin main
       # - run: |
       #     mkdir ./gh-pages
       #     git init -b gh-pages ./gh-pages
